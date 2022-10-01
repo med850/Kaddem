@@ -1,5 +1,6 @@
 package com.exemple.Kaddem.Entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,18 +27,21 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "ETUDIANT")
 public class Etudiant {
 
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
-	private Long id;
+	private Integer id;
 	private String prenom;
 	private String nom;
 	
+
 	@Enumerated(EnumType.STRING)
-	private Option option;
+	private Option opt;
+	
 	
 	@ManyToOne
 	private Departement departement;
@@ -46,15 +51,9 @@ public class Etudiant {
 	
 	
 	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name="Etudiant_Equipe_Table", joinColumns = {
-			 @JoinColumn(name="etudiant_id", referencedColumnName="Id")
-		    
-	},
-	inverseJoinColumns = {
-			 @JoinColumn(name="equipe_id", referencedColumnName="Id")
-	})
-	private Set<Equipe>equipe;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name="ETUDIANT_EQUIPE")
+	private Set<Equipe>equipe = new HashSet<>();
 	
 	
 	
