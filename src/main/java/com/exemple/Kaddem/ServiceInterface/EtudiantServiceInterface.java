@@ -1,4 +1,4 @@
-package com.exemple.Kaddem.Entity.ServiceInterface;
+package com.exemple.Kaddem.ServiceInterface;
 
 import java.util.List;
 

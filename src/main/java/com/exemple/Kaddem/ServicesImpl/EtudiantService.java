@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import com.exemple.Kaddem.Entity.Departement;
 import com.exemple.Kaddem.Entity.Etudiant;
 import com.exemple.Kaddem.Entity.Option;
-import com.exemple.Kaddem.Entity.ServiceInterface.EtudiantServiceInterface;
 import com.exemple.Kaddem.Repositories.EtudiantRepository;
+import com.exemple.Kaddem.ServiceInterface.EtudiantServiceInterface;
 
 
 @Service

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.exemple.Kaddem.Entity.Etudiant;
 import com.exemple.Kaddem.Entity.Option;
-import com.exemple.Kaddem.Entity.ServiceInterface.EtudiantServiceInterface;
+import com.exemple.Kaddem.ServiceInterface.EtudiantServiceInterface;
 
 @RestController
 @RequestMapping("/etudiant")
