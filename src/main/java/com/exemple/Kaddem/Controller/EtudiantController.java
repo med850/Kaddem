@@ -35,18 +35,12 @@ public class EtudiantController {
 	}
 	
 	@PostMapping("/add")
-	public ResponseEntity<Etudiant> addEtudiant(@RequestBody Etudiant etudiant, Option o){
+	public ResponseEntity<Etudiant> addEtudiant(@RequestBody Etudiant etudiant){
 		
-		return ResponseEntity.ok(this.etudiantService.addEtudiant(etudiant, o));
+		return ResponseEntity.ok(this.etudiantService.addEtudiant(etudiant));
 		
 		
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 	@PutMapping("/update")

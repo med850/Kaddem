@@ -16,7 +16,10 @@ import java.util.List;
 public class DetailEquipeService implements DetailEquipeServiceInterface
 {
     @Autowired
-    private DetailEquipeRepository equipeRepo;
+    private DetailEquipeRepository DetequipeRepo;
+
+
+
 
 
 
@@ -28,13 +31,19 @@ public class DetailEquipeService implements DetailEquipeServiceInterface
     @Override
     public DetailEquipe adddetailEquipe(DetailEquipe e) {
         // TODO Auto-generated method stub
-        return equipeRepo.save(e);
+
+        return DetequipeRepo.save(e);
+
+     
+
     }
 
     @Override
     public DetailEquipe updatedetailEquipe(DetailEquipe e) {
         if(retrievedetailEquipe(e.getIdDatailEquipe()) != null){
-            return this.equipeRepo.save(e);
+
+            return this.DetequipeRepo.save(e);
+
         }
         return null;
 
@@ -68,3 +77,4 @@ public class DetailEquipeService implements DetailEquipeServiceInterface
 
 
 }
+

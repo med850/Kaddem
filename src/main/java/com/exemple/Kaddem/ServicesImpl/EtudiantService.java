@@ -25,6 +25,8 @@ public class EtudiantService implements EtudiantServiceInterface{
 	private DepartementRepository depatmentRepo;
 
 	
+	//private DepartmentRepository depRepo;
+	
 	
 	@Override
 	public List<Etudiant> retrieveAllEtudiants() {
@@ -33,23 +35,27 @@ public class EtudiantService implements EtudiantServiceInterface{
 	}
 
 	@Override
-	public Etudiant addEtudiant(Etudiant e, Option o) {
-		// TODO Auto-generated method stub
-		return null;
+	public Etudiant addEtudiant(Etudiant e) {
+		return etudiantRepo.save(e);
 	}
 
-	@Override
-	public Etudiant addAndAssignEtudiant(Etudiant e, Option o, Departement d) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public Etudiant updateEtudiant(Etudiant e) {
 		
-		return this.etudiantRepo.save(e);
+		if(retrieveEtudiant(e.getId())!= null) 
+			
+			return this.etudiantRepo.save(e);
+		
+		
+		return null;
+		
+		
 	}
 
+	
+	
 	@Override
 	public Etudiant retrieveEtudiant(Integer idEtudiant) {
 		
@@ -61,6 +67,31 @@ public class EtudiantService implements EtudiantServiceInterface{
 		this.etudiantRepo.deleteById(idEtudiant);
 		
 	}
+
+
+	
+	
+	
+	@Override
+	public void assignEtudiantDepartement(Integer etudiantId, Integer departementId) {
+		
+		 //recherche
+	     Etudiant etudiant =  etudiantRepo.findById((Integer)etudiantId).orElse(null);
+	    // Departement departement =depatementRepository.findById((Integer)departementId).orElse(null);
+	     //verification
+	      /* if(etudiant != null && departement != null)
+	       {
+	           //Traitement
+	        etudiant.setDepartement(departement);
+	           //Save
+	        etudiantRepo.save(etudiant);
+	       }*/
+		
+	
+		//Etudiant etudiant = retrieveEtudiant(etudiantId);
+		//Departement departement = departement
+		
+		//etudiant.setDepartement(department);
 
 	@Override
 	public void assignEtudiantToDepartement(Integer etudiantId, Integer departementId) {
@@ -74,6 +105,7 @@ public class EtudiantService implements EtudiantServiceInterface{
 			etudiantRepo.save(e);
 
 		}*/
+
 	}
 
 }
