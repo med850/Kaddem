@@ -23,7 +23,7 @@ import lombok.*;
 public class Departement {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
 	private Integer id;
 	private String nomDepartment;

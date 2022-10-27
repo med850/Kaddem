@@ -38,5 +38,5 @@ public class DetailEquipeController {
         return ResponseEntity.ok(dtequipe.updatedetailEquipe(equipe));
     }
 }
-}
+
 

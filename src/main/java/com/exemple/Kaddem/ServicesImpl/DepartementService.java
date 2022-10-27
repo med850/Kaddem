@@ -26,8 +26,10 @@ public class DepartementService implements DepartementServiceInterface {
 
     @Override
     public Departement updateDepartement(Departement d) {
-        return this.departementRepository.save(d);
-    }
+    	if(retrieveDepartement(d.getId()) != null){
+			return this.departementRepository.save(d);
+		}
+		return null;    }
 
     @Override
     public Departement retrieveDepartement(Integer idDepart) {

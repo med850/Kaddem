@@ -72,40 +72,22 @@ public class EtudiantService implements EtudiantServiceInterface{
 	
 	
 	
+
+
 	@Override
-	public void assignEtudiantDepartement(Integer etudiantId, Integer departementId) {
-		
-		 //recherche
-	     Etudiant etudiant =  etudiantRepo.findById((Integer)etudiantId).orElse(null);
-	    // Departement departement =depatementRepository.findById((Integer)departementId).orElse(null);
+	public void assignEtudiantToDepartement(Integer etudiantId, Integer departementId) {
+		 Etudiant etudiant =  etudiantRepo.findById((Integer)etudiantId).orElse(null);
+	     Departement departement =depatmentRepo.findById((Integer)departementId).orElse(null);
 	     //verification
-	      /* if(etudiant != null && departement != null)
+	      if(etudiant != null && departement != null)
 	       {
 	           //Traitement
 	        etudiant.setDepartement(departement);
 	           //Save
 	        etudiantRepo.save(etudiant);
-	       }*/
+	       }
 		
-	
-		//Etudiant etudiant = retrieveEtudiant(etudiantId);
-		//Departement departement = departement
 		
-		//etudiant.setDepartement(department);
-
-	@Override
-	public void assignEtudiantToDepartement(Integer etudiantId, Integer departementId) {
-	/*	//recuperation des objets
-		Etudiant e = etudiantRepo.findById(etudiantId).orElse(null);
-		Departement d =depatmentRepo.findById(departementId).orElse(null);
-		//verification
-		if(e!=null && d!=null)
-		{
-			e.setDepartement(d);
-			etudiantRepo.save(e);
-
-		}*/
-
 	}
 
 }

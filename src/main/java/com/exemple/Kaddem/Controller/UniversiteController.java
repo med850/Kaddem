@@ -36,7 +36,7 @@ public class UniversiteController {
     }
 
 
-    @PutMapping()
+    @PutMapping("/{id}")
     public ResponseEntity<Universite>update(@RequestBody Universite u){
 
         return ResponseEntity.ok(this.universiteService.updateUniversite(u));

@@ -1,11 +1,9 @@
 package com.exemple.Kaddem.Repositories;
 
-import com.exemple.Kaddem.Entity.DetailEquipe;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import com.exemple.Kaddem.Entity.Contrat;
 
-@Repository
-public interface DetailEquipeRepository extends JpaRepository<DetailEquipe, Integer> {
+
+public interface ContratRepository extends JpaRepository<Contrat, Integer> {
 }
-
-
