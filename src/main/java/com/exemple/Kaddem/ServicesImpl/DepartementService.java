@@ -31,7 +31,7 @@ public class DepartementService implements DepartementServiceInterface {
 
     @Override
     public Departement retrieveDepartement(Integer idDepart) {
-        return this.departementRepository.findById(idDepart).get();
+        return this.departementRepository.findById(idDepart).orElse(null);
     }
 
 }
