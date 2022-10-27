@@ -27,6 +27,8 @@ public interface EtudiantServiceInterface {
 	
 	//Done
 	public void removeEtudiant(Integer idEtudiant);
+
+	public void assignEtudiantToDepartement (Integer etudiantId, Integer departementId) ;
 	
 	
 	

@@ -27,7 +27,7 @@ public class EtudiantController {
 	
 	
 	
-	@GetMapping("/")
+	@GetMapping()
 	public List<Etudiant>etudiants(){
 		
 		return etudiantService.retrieveAllEtudiants();
@@ -66,6 +66,12 @@ public class EtudiantController {
 			
 		this.etudiantService.removeEtudiant(id);
 		
+	}
+
+	@PutMapping("/add/{etudiantId}/{departmentId}")
+	public void assignEtudiantToDepartment(@PathVariable Integer etudiantId,@PathVariable Integer departmentId)
+	{
+		this.etudiantService.assignEtudiantToDepartement(etudiantId,departmentId);
 	}
 	
 	

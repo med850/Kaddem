@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+import com.exemple.Kaddem.Repositories.DepartementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,9 @@ public class EtudiantService implements EtudiantServiceInterface{
 	
 	@Autowired
 	private EtudiantRepository etudiantRepo;
+	@Autowired
+	private DepartementRepository depatmentRepo;
+
 	
 	//private DepartmentRepository depRepo;
 	
@@ -64,6 +68,7 @@ public class EtudiantService implements EtudiantServiceInterface{
 		
 	}
 
+
 	
 	
 	
@@ -87,6 +92,20 @@ public class EtudiantService implements EtudiantServiceInterface{
 		//Departement departement = departement
 		
 		//etudiant.setDepartement(department);
+
+	@Override
+	public void assignEtudiantToDepartement(Integer etudiantId, Integer departementId) {
+	/*	//recuperation des objets
+		Etudiant e = etudiantRepo.findById(etudiantId).orElse(null);
+		Departement d =depatmentRepo.findById(departementId).orElse(null);
+		//verification
+		if(e!=null && d!=null)
+		{
+			e.setDepartement(d);
+			etudiantRepo.save(e);
+
+		}*/
+
 	}
 
 }
