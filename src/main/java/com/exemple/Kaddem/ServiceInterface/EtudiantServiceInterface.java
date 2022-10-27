@@ -12,11 +12,9 @@ public interface EtudiantServiceInterface {
 	//Done
 	public List<Etudiant>retrieveAllEtudiants(); 
 	
-	public Etudiant addEtudiant(Etudiant e, Option o);
-	
-	public Etudiant addAndAssignEtudiant(Etudiant e, Option o, Departement d);
-	
-	
+	//Done
+	public Etudiant addEtudiant(Etudiant e);
+
 	
 	//Done
 	public Etudiant updateEtudiant (Etudiant e);
@@ -30,6 +28,9 @@ public interface EtudiantServiceInterface {
 	//Done
 	public void removeEtudiant(Integer idEtudiant);
 	
+	
+	
+	public void assignEtudiantDepartement(Integer etudiantId, Integer departementId);
 	
 	
 }

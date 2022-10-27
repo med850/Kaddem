@@ -36,4 +36,11 @@ public class EquipeController {
 
         return ResponseEntity.ok(equipeService.updateEquipe(equipe));
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable("id") Integer id) {
+
+        this.equipeService.removeEquipe(id);
+
+    }
 }
