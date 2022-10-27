@@ -37,7 +37,7 @@ public class ContratController {
     }
 
 
-    @PutMapping("/update")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Contrat>updateContrat(@RequestBody Contrat contrat){
 
         return ResponseEntity.ok(this.contratService.updateContrat(contrat));

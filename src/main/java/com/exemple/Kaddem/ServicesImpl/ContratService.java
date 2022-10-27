@@ -23,21 +23,22 @@ public class ContratService implements ContratServiceInterface {
 
     @Override
     public Contrat addContrat(Contrat ce) {
-        return null;
+        return this.contratRepo.save(ce);
     }
 
     @Override
     public Contrat updateContrat(Contrat ce) {
-        return null;
+        return this.contratRepo.save(ce);
     }
 
     @Override
     public Contrat retrieveContrat(Integer idContrat) {
-        return null;
+        return this.contratRepo.findById(idContrat).orElse(null);
     }
 
     @Override
     public void removeContrat(Integer idContrat) {
+        this.contratRepo.deleteById(idContrat);
 
     }
 }
