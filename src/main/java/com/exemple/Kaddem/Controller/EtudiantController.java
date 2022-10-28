@@ -43,7 +43,7 @@ public class EtudiantController {
 	}
 	
 	
-	@PutMapping("/update")
+	@PutMapping("/{id}")
 	public ResponseEntity<Etudiant>update(@RequestBody Etudiant etudiant){
 		
 		return ResponseEntity.ok(this.etudiantService.updateEtudiant(etudiant));

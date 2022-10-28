@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -27,7 +28,7 @@ import lombok.NoArgsConstructor;
 public class Equipe {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
 	private Integer id;
 	private String nomEquipe;
@@ -39,6 +40,10 @@ public class Equipe {
 	
 	@ManyToMany(mappedBy ="equipe", fetch = FetchType.EAGER)
 	private Set<Etudiant>etudiant = new HashSet<>();
+	
+	
+	@OneToOne
+    private DetailEquipe detailEquipe;
 	
 	
 }

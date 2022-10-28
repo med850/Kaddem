@@ -31,7 +31,7 @@ public class DepartementController {
     }
 
 
-    @PutMapping()
+    @PutMapping("/{id}")
     public ResponseEntity<Departement>update(@RequestBody Departement d){
 
         return ResponseEntity.ok(this.departementService.updateDepartement(d));

@@ -28,11 +28,13 @@ public interface EtudiantServiceInterface {
 	//Done
 	public void removeEtudiant(Integer idEtudiant);
 
+	
+	
+	//Done
 	public void assignEtudiantToDepartement (Integer etudiantId, Integer departementId) ;
 	
 	
 	
-	public void assignEtudiantDepartement(Integer etudiantId, Integer departementId);
 	
 	
 }
