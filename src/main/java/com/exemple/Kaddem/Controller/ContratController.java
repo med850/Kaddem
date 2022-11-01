@@ -14,9 +14,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/contrat")
-public class ContratController {
+public class ContratController extends BaseController<Contrat, Integer>{
 
-    @Autowired
+   /* @Autowired
     private ContratServiceInterface contratService;
 
 
@@ -62,4 +62,5 @@ public class ContratController {
 
     }
 
+*/
 }

@@ -20,9 +20,9 @@ import com.exemple.Kaddem.ServiceInterface.EtudiantServiceInterface;
 
 @RestController
 @RequestMapping("/etudiant")
-public class EtudiantController {
+public class EtudiantController extends BaseController<Etudiant, Integer>{
 
-	@Autowired
+	/*@Autowired
 	private EtudiantServiceInterface etudiantService;
 	
 	
@@ -74,6 +74,6 @@ public class EtudiantController {
 		this.etudiantService.assignEtudiantToDepartement(etudiantId,departmentId);
 	}
 	
-	
+	*/
 	
 }

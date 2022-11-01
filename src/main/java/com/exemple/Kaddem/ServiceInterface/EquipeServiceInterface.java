@@ -2,11 +2,12 @@ package com.exemple.Kaddem.ServiceInterface;
 
 
 import com.exemple.Kaddem.Entity.Equipe;
+import com.exemple.Kaddem.Entity.Etudiant;
 
 import java.util.List;
 
-public interface EquipeServiceInterface {
-    public List<Equipe> retrieveAllEquipes();
+public interface EquipeServiceInterface extends BaseServiceInterface<Equipe, Integer>{
+ /*   public List<Equipe> retrieveAllEquipes();
 
     public Equipe addEquipe(Equipe e);
 
@@ -26,5 +27,5 @@ public interface EquipeServiceInterface {
 
     public void faireEvoluerEquipes();
 
-    public void AssignEtudiantToEquipe();
+    public void AssignEtudiantToEquipe();*/
 }

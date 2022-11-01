@@ -11,9 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ContratService implements ContratServiceInterface {
+public class ContratService extends BaseServiceImp<Contrat,Integer> implements ContratServiceInterface {
 
-    @Autowired /*fieldinjection*/
+	/*
+    @Autowired //fieldinjection
     private ContratRepository contratRepo;
 
     public List<Contrat> retrieveAllContrats() {
@@ -40,5 +41,5 @@ public class ContratService implements ContratServiceInterface {
     public void removeContrat(Integer idContrat) {
         this.contratRepo.deleteById(idContrat);
 
-    }
+    }*/
 }

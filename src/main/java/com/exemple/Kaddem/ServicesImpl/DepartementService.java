@@ -1,6 +1,7 @@
 package com.exemple.Kaddem.ServicesImpl;
 
 import com.exemple.Kaddem.Entity.Departement;
+import com.exemple.Kaddem.Entity.Etudiant;
 import com.exemple.Kaddem.Repositories.DepartementRepository;
 import com.exemple.Kaddem.ServiceInterface.DepartementServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class DepartementService implements DepartementServiceInterface {
+public class DepartementService extends BaseServiceImp<Departement,Integer>implements DepartementServiceInterface {
 
+	/*
     @Autowired
     private DepartementRepository departementRepository;
     @Override
@@ -35,5 +37,7 @@ public class DepartementService implements DepartementServiceInterface {
     public Departement retrieveDepartement(Integer idDepart) {
         return this.departementRepository.findById(idDepart).orElse(null);
     }
+    
+    */
 
 }

@@ -2,6 +2,7 @@ package com.exemple.Kaddem.Controller;
 
 import com.exemple.Kaddem.Entity.DetailEquipe;
 import com.exemple.Kaddem.Entity.Equipe;
+import com.exemple.Kaddem.Entity.Etudiant;
 import com.exemple.Kaddem.ServiceInterface.DetailEquipeServiceInterface;
 import com.exemple.Kaddem.ServiceInterface.EquipeServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/detailequipe")
-public class DetailEquipeController {
+public class DetailEquipeController extends BaseController<DetailEquipe, Integer>{
 
-    @Autowired
+   /* @Autowired
     private DetailEquipeServiceInterface dtequipe;
 
     @GetMapping("/")
@@ -37,6 +38,9 @@ public class DetailEquipeController {
 
         return ResponseEntity.ok(dtequipe.updatedetailEquipe(equipe));
     }
+    
+    
+    */
 }
 
 

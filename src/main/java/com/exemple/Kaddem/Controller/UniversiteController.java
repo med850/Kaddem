@@ -2,6 +2,7 @@ package com.exemple.Kaddem.Controller;
 
 
 
+import com.exemple.Kaddem.Entity.Etudiant;
 import com.exemple.Kaddem.Entity.Universite;
 
 import com.exemple.Kaddem.ServiceInterface.UniversiteServiceInterface;
@@ -16,9 +17,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/universite")
-public class UniversiteController {
+public class UniversiteController extends BaseController<Universite, Integer>{
 
-    @Autowired
+  /*  @Autowired
     private UniversiteServiceInterface universiteService;
 
 
@@ -57,6 +58,6 @@ public class UniversiteController {
         this.universiteService.removeUniversite(id);
     }
 
-
+*/
 
 }
