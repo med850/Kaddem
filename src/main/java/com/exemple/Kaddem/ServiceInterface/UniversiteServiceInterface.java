@@ -8,8 +8,8 @@ import com.exemple.Kaddem.Entity.Universite;
 import java.util.List;
 
 
-public interface UniversiteServiceInterface {
-
+public interface UniversiteServiceInterface extends BaseServiceInterface<Universite, Integer>{
+/*
     //Done
     public List<Universite> retrieveAllUniversite();
 
@@ -26,7 +26,7 @@ public interface UniversiteServiceInterface {
 
 
     //Done
-    void removeUniversite (Integer idUniversite);
+    void removeUniversite (Integer idUniversite);*/
 
 
 }

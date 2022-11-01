@@ -6,9 +6,9 @@ import com.exemple.Kaddem.Entity.Departement;
 import com.exemple.Kaddem.Entity.Etudiant;
 import com.exemple.Kaddem.Entity.Option;
 
-public interface EtudiantServiceInterface {
+public interface EtudiantServiceInterface extends BaseServiceInterface<Etudiant, Integer> {
 
-	
+/*	
 	//Done
 	public List<Etudiant>retrieveAllEtudiants(); 
 	
@@ -34,7 +34,7 @@ public interface EtudiantServiceInterface {
 	public void assignEtudiantToDepartement (Integer etudiantId, Integer departementId) ;
 	
 	
+	Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Integer idContrat,Integer idEquipe);
 	
-	
-	
+	*/
 }

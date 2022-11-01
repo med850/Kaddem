@@ -1,6 +1,7 @@
 package com.exemple.Kaddem.ServicesImpl;
 
 import com.exemple.Kaddem.Entity.Equipe;
+import com.exemple.Kaddem.Entity.Etudiant;
 import com.exemple.Kaddem.Repositories.EquipeRepository;
 import com.exemple.Kaddem.ServiceInterface.EquipeServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +12,9 @@ import java.util.List;
 
 
 @Service
-public class EquipeService implements EquipeServiceInterface {
+public class EquipeService extends BaseServiceImp<Equipe,Integer>implements EquipeServiceInterface {
 
-	
+	/*
 	@Autowired
 	private EquipeRepository equipeRepo;
 	
@@ -64,4 +65,5 @@ public class EquipeService implements EquipeServiceInterface {
 
 	}
 
+*/
 }

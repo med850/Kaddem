@@ -1,5 +1,6 @@
 package com.exemple.Kaddem.ServicesImpl;
 
+import com.exemple.Kaddem.Entity.Etudiant;
 import com.exemple.Kaddem.Entity.Universite;
 import com.exemple.Kaddem.Repositories.EtudiantRepository;
 import com.exemple.Kaddem.Repositories.UniversiteRepository;
@@ -11,9 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UniversiteService implements UniversiteServiceInterface {
+public class UniversiteService extends BaseServiceImp<Universite,Integer> implements UniversiteServiceInterface {
 
-    @Autowired
+  /*  @Autowired
     private UniversiteRepository universiteRepository;
 
     //DONE
@@ -45,4 +46,7 @@ public class UniversiteService implements UniversiteServiceInterface {
         this.universiteRepository.deleteById(idUniversite);
 
     }
+    
+    
+    */
 }

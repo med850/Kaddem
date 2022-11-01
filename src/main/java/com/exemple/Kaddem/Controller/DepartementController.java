@@ -1,6 +1,7 @@
 package com.exemple.Kaddem.Controller;
 
 import com.exemple.Kaddem.Entity.Departement;
+import com.exemple.Kaddem.Entity.Etudiant;
 import com.exemple.Kaddem.Entity.Universite;
 import com.exemple.Kaddem.ServiceInterface.DepartementServiceInterface;
 import com.exemple.Kaddem.ServiceInterface.UniversiteServiceInterface;
@@ -12,8 +13,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/depatement")
-public class DepartementController {
-    @Autowired
+public class DepartementController extends BaseController<Departement, Integer>{
+  /*  @Autowired
     private DepartementServiceInterface departementService;
 
 
@@ -46,5 +47,5 @@ public class DepartementController {
 
     }
 
-
+*/
 }
