@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,60 +21,24 @@ import com.exemple.Kaddem.ServiceInterface.EtudiantServiceInterface;
 
 @RestController
 @RequestMapping("/etudiant")
+@CrossOrigin("*")
 public class EtudiantController extends BaseController<Etudiant, Integer>{
 
-	/*@Autowired
+	@Autowired
 	private EtudiantServiceInterface etudiantService;
 	
 	
 	
-	@GetMapping()
-	public List<Etudiant>etudiants(){
-		
-		return etudiantService.retrieveAllEtudiants();
-		
-	}
 	
-	@PostMapping("/add")
-	public ResponseEntity<Etudiant> addEtudiant(@RequestBody Etudiant etudiant){
-		
-		return ResponseEntity.ok(this.etudiantService.addEtudiant(etudiant));
-		
-		
-	}
-	
-	
-	@PutMapping("/{id}")
-	public ResponseEntity<Etudiant>update(@RequestBody Etudiant etudiant){
-		
-		return ResponseEntity.ok(this.etudiantService.updateEtudiant(etudiant));
-	
-		
-	}
-	
-	
-	@GetMapping("/{id}")
-	public Etudiant etudiant (@PathVariable("id") Integer id) {
-		
-		return this.etudiantService.retrieveEtudiant(id);
-		
-	}
-	
-	
+	   @PostMapping("Assigne/{idE}/{idD}")
+	    private Etudiant AddandAssigne(@PathVariable(value = "idE") Integer idE,@PathVariable(value = "idD") Integer idD){
+	        etudiantService.assignEtudiantToDepartement(idE,idD);
+	        return etudiantService.retrieve(idE) ;
+	    }
+	    @GetMapping("list/{idD}")
+	    private List<Etudiant> getEtudiantsByDepartement(@PathVariable(value = "idD") Integer idD){
+	        return etudiantService.getEtudiantsByDepartement(idD);
+	    }
 
-	@DeleteMapping("/delete/{id}")
-	public void delete(@PathVariable("id") Integer id) {
-			
-		this.etudiantService.removeEtudiant(id);
-		
-	}
-
-	@PutMapping("/add/{etudiantId}/{departmentId}")
-	public void assignEtudiantToDepartment(@PathVariable Integer etudiantId,@PathVariable Integer departmentId)
-	{
-		this.etudiantService.assignEtudiantToDepartement(etudiantId,departmentId);
-	}
-	
-	*/
 	
 }

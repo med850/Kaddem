@@ -10,57 +10,50 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.List;
 
 @RestController
 @RequestMapping("/contrat")
 public class ContratController extends BaseController<Contrat, Integer>{
 
-   /* @Autowired
+	@Autowired
     private ContratServiceInterface contratService;
 
 
-    @GetMapping()
-    public List<Contrat> contrats(){
+	
+	/* @PutMapping("/affectContratToEtudiant/{nomE}/{penomE}")
+	    public Contrat affectContratToEtudiant (@RequestBody Contrat ce, @PathVariable String nomE,@PathVariable String penomE){
+		 contratService.affectContratToEtudiant(ce,nomE,penomE);
+	        return null;
+	    }*/
 
-        return contratService.retrieveAllContrats();
-
-    }
-
-
-    @PostMapping("/add")
-    public ResponseEntity<Contrat> addContrat(@RequestBody Contrat contrat){
-
-        return ResponseEntity.ok(this.contratService.addContrat(contrat));
-
-
-    }
-
-   // @PutMapping(path ="{id}")
-   @PutMapping("/update/{id}")
-    public ResponseEntity<Contrat>updateContrat(@RequestBody Contrat contrat){
-
-        return ResponseEntity.ok(this.contratService.updateContrat(contrat));
-
-
-    }
-
-
-
-    @GetMapping("/{id}")
-    public Contrat retrieveContrat (@PathVariable("id") Integer id) {
-
-        return this.contratService.retrieveContrat(id);
-
-    }
+	
+	
+	  @PostMapping("Affect/{NomE}/{prenomE}")
+	    public Contrat affect(@RequestBody Contrat contrat, @PathVariable(value = "NomE") String NomE, @PathVariable(value = "prenomE") String prenomE){
+		  contratService.affectContratToEtudiant(contrat,NomE,prenomE);
+	        return contrat ;
+	    }
+	
+	
+	
+	  
+	    @GetMapping("nbrContrat/{date1}/{date2}")
+	    public Integer nbContratsValides(@PathVariable(value = "date1") String date1, @PathVariable(value = "date2") String date2)
+	    {
+	        Date startDate = Date.valueOf(date1);
+	        Date endDate = Date.valueOf(date2);
+	        return contratService.nbContratsValides(startDate,endDate);
+	    }
+	    @GetMapping("status")
+	    public String retrieveAndUpdateStatusContrat() throws Exception {
+	        return contratService.retrieveAndUpdateStatusContrat();
+	    }
 
 
-    @DeleteMapping("/delete/{id}")
-    public void removeContrat(@PathVariable("id") Integer id) {
-
-        this.contratService.removeContrat(id);
-
-    }
-
-*/
+	  
+	  
+	  
+	
 }

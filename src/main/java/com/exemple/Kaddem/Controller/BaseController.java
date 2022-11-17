@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.exemple.Kaddem.Entity.Contrat;
 import com.exemple.Kaddem.ServiceInterface.BaseServiceInterface;
 
+
+
 public class BaseController<T, id> {
 
 	
