@@ -14,38 +14,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/depatement")
 public class DepartementController extends BaseController<Departement, Integer>{
-  /*  @Autowired
-    private DepartementServiceInterface departementService;
+	
 
 
-
-    @GetMapping()
-    public List<Departement> departements(){
-
-        return departementService.retrieveAllDepartements();
-    }
-
-    @PostMapping()
-    public ResponseEntity<Departement> addDepartement(@RequestBody Departement d){
-
-        return ResponseEntity.ok(this.departementService.addDepartement(d));
-    }
-
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Departement>update(@RequestBody Departement d){
-
-        return ResponseEntity.ok(this.departementService.updateDepartement(d));
-
-
-    }
-    //NOTDONE
-    @GetMapping("/{id}")
-    public Departement departement(@PathVariable("id") Integer id) {
-
-        return this.departementService.retrieveDepartement(id);
-
-    }
-
-*/
+  
 }

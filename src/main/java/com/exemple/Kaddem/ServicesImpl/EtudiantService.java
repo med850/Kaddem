@@ -23,90 +23,57 @@ import com.exemple.Kaddem.ServiceInterface.EtudiantServiceInterface;
 @Service
 public class EtudiantService extends BaseServiceImp<Etudiant,Integer> implements EtudiantServiceInterface{
 
-/*	
 	@Autowired
 	private EtudiantRepository etudiantRepo;
 	@Autowired
 	private DepartementRepository depatmentRepo;
-	@Autowired
-	private EquipeRepository equipeRepo;
-	@Autowired
-	private ContratRepository contratRepo;
-
 	
-	//private DepartmentRepository depRepo;
-	
-	
-	@Override
-	public List<Etudiant> retrieveAllEtudiants() {
-		
-		return new ArrayList<>(this.etudiantRepo.findAll());
-	}
-
-	@Override
-	public Etudiant addEtudiant(Etudiant e) {
-		return etudiantRepo.save(e);
-	}
-
-
-
-	@Override
-	public Etudiant updateEtudiant(Etudiant e) {
-		
-		if(retrieveEtudiant(e.getId())!= null) 
-			
-			return this.etudiantRepo.save(e);
-		
-		
-		return null;
-		
-		
-	}
-
-	
-	
-	@Override
-	public Etudiant retrieveEtudiant(Integer idEtudiant) {
-		
-		return this.etudiantRepo.findById(idEtudiant).get();
-	}
-
-	@Override
-	public void removeEtudiant(Integer idEtudiant) {
-		this.etudiantRepo.deleteById(idEtudiant);
-		
-	}
-
-
+	  @Autowired
+	  private DepartementService departService ;
 	
 	
 	
-
-
+	
 	@Override
 	public void assignEtudiantToDepartement(Integer etudiantId, Integer departementId) {
-		 Etudiant etudiant =  etudiantRepo.findById((Integer)etudiantId).orElse(null);
-	     Departement departement =depatmentRepo.findById((Integer)departementId).orElse(null);
-	     //verification
-	      if(etudiant != null && departement != null)
-	       {
-	           //Traitement
-	        etudiant.setDepartement(departement);
-	           //Save
-	        etudiantRepo.save(etudiant);
-	       }
-		
+		 Etudiant etudiant = this.retrieve(etudiantId);
+	        Departement departement = departService.retrieve(departementId);
+	        System.out.println(departement);
+	        if(etudiant !=null && departement != null)
+	        {
+	            etudiant.setDepartement(departement);
+	            this.add(etudiant);
+	        }
 		
 	}
-
 	@Override
-	public Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Integer idContrat, Integer idEquipe) {
-		Etudiant etudiant = etudiantRepo.save(e);
-		//Optional<Equipe> equipe = equipeRepo.findById(idEquipe);
-		Equipe equipe = equipeRepo.findById((Integer)idEquipe).orElse(null);
-		//Contrat contrat = 
+	public List<Etudiant> getEtudiantsByDepartement(Integer idDepartement) {
+		 Departement departement = departService.retrieve(idDepartement);
+	        if(departement != null)
+	        {
+	           return etudiantRepo.findByDepartement(departement);
+	        }
 		return null;
 	}
-	*/
+	
+	
+	
+	
+
+	 public Etudiant findByNomAndPrenom(String nomE, String prenomE) {
+	        List<Etudiant> etudiants = etudiantRepo.findAll();
+	        Etudiant et = new Etudiant();
+	        for (Etudiant e : etudiants) {
+	            if (e.getPrenom().equals(nomE) && e.getNom().equals(prenomE)) {
+	                et = e;
+	                return et;
+	            }
+	        }
+	        return et ;
+	        
+	        
+	 }
+
+
 
 }

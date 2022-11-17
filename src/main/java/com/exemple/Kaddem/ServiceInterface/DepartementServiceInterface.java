@@ -14,5 +14,7 @@ public interface DepartementServiceInterface extends BaseServiceInterface<Depart
     Departement updateDepartement (Departement d);
 
     Departement retrieveDepartement (Integer idDepart);*/
+	
+	// List<Etudiant> getEtudiantsByDepartement (int idDepart);
 
 }

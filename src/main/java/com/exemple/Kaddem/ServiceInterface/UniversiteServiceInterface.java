@@ -27,6 +27,15 @@ public interface UniversiteServiceInterface extends BaseServiceInterface<Univers
 
     //Done
     void removeUniversite (Integer idUniversite);*/
+	
+	
+//	public void assignUniversiteToDepartement(int idUniversite, int idDepartement);
+  //  public List<Departement> retrieveDepartementsByUniversite(int idUniv);
 
 
+	 void assignUniversiteToDepartement(Integer idUniversite, Integer
+	            idDepartement);
+	 public List<Departement> retrieveDepartementsByUniversite(Integer idUniversite) ;
+	
+	
 }
