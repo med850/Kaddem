@@ -11,4 +11,11 @@ public interface UserServiceInterface extends BaseServiceInterface<Users, Intege
 	
 	public Users register(Users user, Set<UserRole>userRole) throws Exception;
 
+
+	//Get users by username
+	public Users getUserByUsername(String username);
+
+
+
+
 }

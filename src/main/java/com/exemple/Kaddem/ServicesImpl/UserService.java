@@ -50,4 +50,12 @@ public class UserService extends BaseServiceImp<Users,Integer> implements UserSe
 		return local;
 	}
 
+
+
+	@Override
+	public Users getUserByUsername(String username) {
+		return this.userRepo.findByUsername(username);
+
+	}
+
 }
