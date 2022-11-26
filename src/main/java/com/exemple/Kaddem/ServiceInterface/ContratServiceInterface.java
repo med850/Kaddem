@@ -25,6 +25,8 @@ public interface ContratServiceInterface extends BaseServiceInterface<Contrat, I
 		
 			String retrieveAndUpdateStatusContrat() throws InterruptedException, Exception;
 
+
+
 	
 	
 }

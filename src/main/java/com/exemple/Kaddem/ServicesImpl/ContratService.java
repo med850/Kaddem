@@ -10,12 +10,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class ContratService extends BaseServiceImp<Contrat,Integer> implements ContratServiceInterface {
@@ -61,9 +56,47 @@ public class ContratService extends BaseServiceImp<Contrat,Integer> implements C
 	}
 
 	@Override
-	public Map<Integer, Float> getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate) {
-		// TODO Auto-generated method stub
-		return null;
+	public Map<Integer,Float> getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate) {
+		List<Contrat> contrats = this.retrieveAll();
+		Map<Integer,Float> map = new HashMap<>();
+		float chiffreAffaire  = 0 ;
+		System.out.println(contrats);
+		Contrat  contrat = new Contrat();
+		for (Contrat c : contrats) {
+
+			Date datedebut = c.getDateDebutContrat();
+			Date datefin = c.getDateFinContrat();
+			System.out.println(c.getId());
+			System.out.println(datedebut.after(startDate) + "/"+ datefin.before(endDate)+"/"+ c.isArchive());
+			try {
+				if (datedebut.after(startDate) && datefin.before(endDate) && !c.isArchive()) {
+					switch (c.getSpecialite().name()) {
+						case "IA":
+							map.put(c.getId(), 300f);
+							break;
+						case "RESEAUX":
+							System.out.println(c.getSpecialite());
+							map.put(c.getId(), 350f);
+							break;
+						case "CLOUD":
+							System.out.println(c.getSpecialite());
+							map.put(c.getId(), 400f);
+							break;
+						case "SECURITE":
+							map.put(c.getId(), 450f);
+							break;
+						default:
+							System.out.println("no specialite");
+							map.put(c.getId(), 0f);
+							break;
+					}
+				}
+			} catch (NullPointerException e) {
+				System.out.println("null");
+			}
+
+		}
+		return map;
 	}
 
 	@Override

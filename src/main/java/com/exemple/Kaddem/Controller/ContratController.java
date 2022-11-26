@@ -11,7 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
+import java.text.ParseException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/contrat")
@@ -50,6 +52,14 @@ public class ContratController extends BaseController<Contrat, Integer>{
 	    public String retrieveAndUpdateStatusContrat() throws Exception {
 	        return contratService.retrieveAndUpdateStatusContrat();
 	    }
+
+	@GetMapping("ChiffreAffaire/{date1}/{date2}")
+	public Map<Integer,Float> chiffreAffaire(@PathVariable(value = "date1") String date1, @PathVariable(value = "date2") String date2) throws ParseException {
+		Date startDate = Date.valueOf(date1);
+		Date endDate = Date.valueOf(date2);
+		return contratService.getChiffreAffaireEntreDeuxDate(startDate,endDate);
+
+	}
 
 
 	  
