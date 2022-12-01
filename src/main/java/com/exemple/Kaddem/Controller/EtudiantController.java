@@ -19,6 +19,8 @@ import com.exemple.Kaddem.Entity.Etudiant;
 import com.exemple.Kaddem.Entity.Option;
 import com.exemple.Kaddem.ServiceInterface.EtudiantServiceInterface;
 
+import javax.transaction.Transactional;
+
 @RestController
 @RequestMapping("/etudiant")
 @CrossOrigin("*")
@@ -39,6 +41,13 @@ public class EtudiantController extends BaseController<Etudiant, Integer>{
 	    private List<Etudiant> getEtudiantsByDepartement(@PathVariable(value = "idD") Integer idD){
 	        return etudiantService.getEtudiantsByDepartement(idD);
 	    }
+
+		@PostMapping("add_etudiant/assign_equipe_contrat/{idE}/{idC}")
+		@Transactional
+		Etudiant addAndAssignEtudiantToEquipeAndContract(@RequestBody Etudiant etudiant, @PathVariable(value = "idE") Integer idEquipe, @PathVariable(value = "idC") Integer idContrat){
+		   return etudiantService.addAndAssignEtudiantToEquipeAndContract(etudiant, idEquipe, idContrat);
+		}
+
 
 	
 }

@@ -1,6 +1,9 @@
 package com.exemple.Kaddem.Entity;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -53,7 +56,7 @@ public class Etudiant {
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="ETUDIANT_EQUIPE")
-	private Set<Equipe>equipe = new HashSet<>();
+	private List<Equipe> equipe = new ArrayList<>();
 	
 	
 	

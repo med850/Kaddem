@@ -1,9 +1,8 @@
 package com.exemple.Kaddem.ServicesImpl;
 
-import com.exemple.Kaddem.Entity.Contrat;
-import com.exemple.Kaddem.Entity.Equipe;
-import com.exemple.Kaddem.Entity.Etudiant;
+import com.exemple.Kaddem.Entity.*;
 import com.exemple.Kaddem.Repositories.ContratRepository;
+import com.exemple.Kaddem.Repositories.UniversiteRepository;
 import com.exemple.Kaddem.ServiceInterface.ContratServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -17,13 +16,17 @@ public class ContratService extends BaseServiceImp<Contrat,Integer> implements C
 
 	
 	   @Autowired //fieldinjection
-	    private ContratRepository contratRepo;
+	    private ContratRepository contratRepository;
 	   
 	   
 	   @Autowired
 	    EquipeService equipeService;
 	    @Autowired
 	    EtudiantService etudService;
+
+
+	    @Autowired
+		UniversiteRepository universiteRepository;
 	   
 	   
 
@@ -31,10 +34,8 @@ public class ContratService extends BaseServiceImp<Contrat,Integer> implements C
 	public Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Integer idContrat, Integer idEquipe) {
 		 Contrat contrat = this.retrieve(idContrat);
 	        Equipe equipe = equipeService.retrieve(idEquipe);
-	        Set<Contrat> sd = new HashSet<>();
-	        Set<Equipe> se = new HashSet<>();
-	        sd.add(contrat);
-	      //  e.setContrat(sd);
+	        List<Equipe> se = new ArrayList<>();
+	        e.setContrat(contrat);
 	        se.add(equipe);
 	        e.setEquipe(se);
 	        etudService.add(e);
@@ -42,17 +43,46 @@ public class ContratService extends BaseServiceImp<Contrat,Integer> implements C
 	}
 
 	@Override
-	public Contrat affectContratToEtudiant(Contrat ce, String NomE, String prenomE) {
-		/* Etudiant etudiant = etudService.findByNomAndPrenom(NomE, prenomE);
-	        if(contratRepository.findContratByEtudiantId(etudiant.getId()).size() < 2) {
-	            Contrat contrat = this.findById(ce.getId());
-	            ce.setEtudiant(etudiant);
-	            this.update(ce);
-	            return this.findById(ce.getId());
-	        }else {
-	            return null;
-	        }*/
+	public Map<Specialite, Float> getMontantContartEntreDeuxDate(int idUniv, Date startDate, Date endDate) {
+		Specialite[] specialites = Specialite.values();
+		Universite u = new Universite();
+		Universite universite = universiteRepository.findById(idUniv).orElse(u);
+		Map<Specialite, Float> map = new HashMap<>();
+		List<Contrat> contrats;
+		if(endDate.compareTo(startDate) >0)
+		{
+			List<Departement> ldept = universite.getDept();
+			for(Departement dep:ldept){
+				int montant=0;
+				for( Specialite specialite : specialites){
+//					contrats = contratRepository.findContratsByDepartmentAndSpecialite(dep.getId(), specialite);
+//					contrats.forEach(System.out::println);
+//					montant+=
+				}
+			}
+		}
+
 		return null;
+	}
+
+//	public Map<Specialite, Float>getMontantContratByDepartement(int idDept){
+//		Map<Specialite, Float> map = new HashMap<>();
+//		float montant = 0;
+//		fo
+//		return map;
+//	}
+
+	@Override
+	public Contrat affectContratToEtudiant(Contrat ce, Integer idEtudiant) {
+		Etudiant etudiant = etudService.retrieve(idEtudiant);
+
+		if(contratRepository.findContratByEtudiantId(etudiant.getId()).size() < 2) {
+			ce.setEtudiant(etudiant);
+			this.add(ce);
+			return this.retrieve(ce.getId());
+		}else {
+			return null;
+		}
 	}
 
 	@Override
@@ -61,7 +91,6 @@ public class ContratService extends BaseServiceImp<Contrat,Integer> implements C
 		Map<Integer,Float> map = new HashMap<>();
 		float chiffreAffaire  = 0 ;
 		System.out.println(contrats);
-		Contrat  contrat = new Contrat();
 		for (Contrat c : contrats) {
 
 			Date datedebut = c.getDateDebutContrat();
@@ -72,17 +101,19 @@ public class ContratService extends BaseServiceImp<Contrat,Integer> implements C
 				if (datedebut.after(startDate) && datefin.before(endDate) && !c.isArchive()) {
 					switch (c.getSpecialite().name()) {
 						case "IA":
+							System.out.println(c.getSpecialite().name());
 							map.put(c.getId(), 300f);
 							break;
 						case "RESEAUX":
-							System.out.println(c.getSpecialite());
+							System.out.println(c.getSpecialite().name());
 							map.put(c.getId(), 350f);
 							break;
 						case "CLOUD":
-							System.out.println(c.getSpecialite());
+							System.out.println(c.getSpecialite().name());
 							map.put(c.getId(), 400f);
 							break;
 						case "SECURITE":
+							System.out.println(c.getSpecialite().name());
 							map.put(c.getId(), 450f);
 							break;
 						default:
@@ -98,6 +129,8 @@ public class ContratService extends BaseServiceImp<Contrat,Integer> implements C
 		}
 		return map;
 	}
+
+
 
 	@Override
 	public Integer nbContratsValides(Date startDate, Date endDate) {

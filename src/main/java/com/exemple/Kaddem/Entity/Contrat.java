@@ -14,16 +14,18 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@CrossOrigin("*")
 @Table(name = "CONTRAT")
 public class Contrat {
 
@@ -41,11 +43,13 @@ public class Contrat {
 	
 	@Enumerated(EnumType.STRING)
 	private Specialite specialite;
-	
+
+	private float montantContrat;
 	private boolean archive;
 	
 	
 	@OneToOne
+	@JsonIgnore
 	private Etudiant etudiant;
 	
 	

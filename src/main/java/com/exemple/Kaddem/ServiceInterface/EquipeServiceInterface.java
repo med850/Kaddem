@@ -23,9 +23,8 @@ public interface EquipeServiceInterface extends BaseServiceInterface<Equipe, Int
 
 
 
-    public void removeEquipe(Integer idEquipe);
+    public void removeEquipe(Integer idEquipe);*/
 
     public void faireEvoluerEquipes();
 
-    public void AssignEtudiantToEquipe();*/
 }

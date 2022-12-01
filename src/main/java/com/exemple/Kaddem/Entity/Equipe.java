@@ -1,6 +1,8 @@
 package com.exemple.Kaddem.Entity;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -16,6 +18,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -39,7 +42,8 @@ public class Equipe {
 	
 	
 	@ManyToMany(mappedBy ="equipe", fetch = FetchType.EAGER)
-	private Set<Etudiant>etudiant = new HashSet<>();
+	@JsonIgnore
+	private List<Etudiant> etudiant = new ArrayList<>();
 	
 	
 	@OneToOne
