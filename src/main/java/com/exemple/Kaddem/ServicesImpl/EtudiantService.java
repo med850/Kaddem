@@ -72,11 +72,28 @@ public class EtudiantService extends BaseServiceImp<Etudiant,Integer> implements
 		Equipe equipe = equipeRepository.findById(idEquipe).orElse(null);
 		System.out.println(equipe);
 		List<Equipe> equipes = new ArrayList<>();
+		Set<Contrat> contrats = new HashSet<>();
 		equipes.add(equipe);
 		etudiant.setEquipe(equipes);
-		etudiant.setContrat(contrat);
+		etudiant.setContrats(contrats);
 		this.add(etudiant);
 		return etudiant;
+	}
+
+	@Override
+	public Etudiant assignEtudiantToEquipe(Integer idEt, Integer idEq){
+		Equipe equipe = equipeRepository.findById(idEq).orElse(null);
+		System.out.println(equipe);
+		List<Equipe> equipes = new ArrayList<>();
+		equipes.add(equipe);
+		Etudiant etudiant = this.retrieve(idEt);
+		System.out.println("etudiant");
+		System.out.println(etudiant);
+		etudiant.setEquipe(equipes);
+		System.out.println(etudiant);
+		this.update(etudiant);
+		return etudiant;
+
 	}
 
 

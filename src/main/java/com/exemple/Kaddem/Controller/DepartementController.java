@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/depatement")
+@CrossOrigin("*")
 public class DepartementController extends BaseController<Departement, Integer>{
 	
 

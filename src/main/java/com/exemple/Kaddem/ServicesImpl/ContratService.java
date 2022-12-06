@@ -32,14 +32,15 @@ public class ContratService extends BaseServiceImp<Contrat,Integer> implements C
 
 	@Override
 	public Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Integer idContrat, Integer idEquipe) {
-		 Contrat contrat = this.retrieve(idContrat);
-	        Equipe equipe = equipeService.retrieve(idEquipe);
-	        List<Equipe> se = new ArrayList<>();
-	        e.setContrat(contrat);
-	        se.add(equipe);
-	        e.setEquipe(se);
-	        etudService.add(e);
-	        return e;
+		Contrat contrat = this.retrieve(idContrat);
+		Equipe equipe = equipeService.retrieve(idEquipe);
+		List<Equipe> se = new ArrayList<>();
+		Set<Contrat> contrats = new HashSet<>();
+		e.setContrats(contrats);
+		se.add(equipe);
+		e.setEquipe(se);
+		etudService.add(e);
+		return e;
 	}
 
 	@Override

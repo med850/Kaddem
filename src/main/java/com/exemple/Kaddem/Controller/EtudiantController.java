@@ -48,6 +48,12 @@ public class EtudiantController extends BaseController<Etudiant, Integer>{
 		   return etudiantService.addAndAssignEtudiantToEquipeAndContract(etudiant, idEquipe, idContrat);
 		}
 
+		@PutMapping("/assign_equipe/{idEt}/{idEq}")
+//		@Transactional
+		Etudiant assignEtudiantToEquipe(@PathVariable(value = "idEt") Integer idEtudiant, @PathVariable(value = "idEq") Integer idEquipe){
+		   return etudiantService.assignEtudiantToEquipe(idEtudiant, idEquipe);
+		}
+
 
 	
 }

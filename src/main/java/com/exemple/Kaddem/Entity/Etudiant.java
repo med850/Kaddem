@@ -1,6 +1,5 @@
 package com.exemple.Kaddem.Entity;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -19,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -33,31 +33,31 @@ import lombok.NoArgsConstructor;
 @Table(name = "ETUDIANT")
 public class Etudiant {
 
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
 	private Integer id;
 	private String prenom;
 	private String nom;
-	
+
 
 	@Enumerated(EnumType.STRING)
 	private Option opt;
-	
-	
+
+
 	@ManyToOne
 	private Departement departement;
-	
-	@OneToOne(mappedBy = "etudiant")
-	private Contrat contrat;
-	
-	
-	
+
+	@OneToMany(mappedBy = "etudiant", fetch = FetchType.LAZY)
+	private Set<Contrat>contrats;
+
+
+
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="ETUDIANT_EQUIPE")
 	private List<Equipe> equipe = new ArrayList<>();
-	
-	
-	
+
+
+
 }
