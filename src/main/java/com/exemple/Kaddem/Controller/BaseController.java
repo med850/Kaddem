@@ -32,11 +32,14 @@ public class BaseController<T, id> {
 
 	    @PostMapping("/add")
 	    public ResponseEntity<T> add(@RequestBody T e){
-
+			System.out.println(e);
 	        return ResponseEntity.ok(this.baseService.add(e));
 
 
 	    }
+
+
+	   // @PutMapping(path ="{id}")
 
 	   @PutMapping("/update")
 	    public ResponseEntity<T>update(@RequestBody T e){

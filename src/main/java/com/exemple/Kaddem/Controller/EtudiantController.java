@@ -21,6 +21,8 @@ import com.exemple.Kaddem.Repositories.EtudiantRepository;
 import com.exemple.Kaddem.Repositories.UserRepository;
 import com.exemple.Kaddem.ServiceInterface.EtudiantServiceInterface;
 
+import javax.transaction.Transactional;
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/etudiant")
@@ -44,6 +46,20 @@ public class EtudiantController extends BaseController<Etudiant, Integer>{
 	        return etudiantService.getEtudiantsByDepartement(idD);
 	    }
 
+
+		@PostMapping("add_etudiant/assign_equipe_contrat/{idE}/{idC}")
+		@Transactional
+		Etudiant addAndAssignEtudiantToEquipeAndContract(@RequestBody Etudiant etudiant, @PathVariable(value = "idE") Integer idEquipe, @PathVariable(value = "idC") Integer idContrat){
+		   return etudiantService.addAndAssignEtudiantToEquipeAndContract(etudiant, idEquipe, idContrat);
+		}
+
+		@PutMapping("/assign_equipe/{idEt}/{idEq}")
+//		@Transactional
+		Etudiant assignEtudiantToEquipe(@PathVariable(value = "idEt") Integer idEtudiant, @PathVariable(value = "idEq") Integer idEquipe){
+		   return etudiantService.assignEtudiantToEquipe(idEtudiant, idEquipe);
+		}
+
+
 	    
 	    @GetMapping("/count")
 		private Integer getNumberOfEtudiant(){
@@ -51,7 +67,6 @@ public class EtudiantController extends BaseController<Etudiant, Integer>{
 		}
 		
 	    
-	    
-	    
+
 	
 }

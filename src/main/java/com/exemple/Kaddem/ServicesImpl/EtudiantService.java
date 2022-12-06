@@ -1,10 +1,8 @@
 package com.exemple.Kaddem.ServicesImpl;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
+import com.exemple.Kaddem.Entity.*;
 import com.exemple.Kaddem.Repositories.ContratRepository;
 import com.exemple.Kaddem.Repositories.DepartementRepository;
 import com.exemple.Kaddem.Repositories.EquipeRepository;
@@ -12,10 +10,6 @@ import com.exemple.Kaddem.Repositories.EquipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.exemple.Kaddem.Entity.Departement;
-import com.exemple.Kaddem.Entity.Equipe;
-import com.exemple.Kaddem.Entity.Etudiant;
-import com.exemple.Kaddem.Entity.Option;
 import com.exemple.Kaddem.Repositories.EtudiantRepository;
 import com.exemple.Kaddem.ServiceInterface.EtudiantServiceInterface;
 
@@ -28,8 +22,14 @@ public class EtudiantService extends BaseServiceImp<Etudiant,Integer> implements
 	@Autowired
 	private DepartementRepository depatmentRepo;
 	
-	  @Autowired
-	  private DepartementService departService ;
+	@Autowired
+	private DepartementService departService ;
+
+	@Autowired
+	private EquipeRepository equipeRepository;
+
+	@Autowired
+	private ContratRepository contratRepository;
 	
 	
 	
@@ -55,12 +55,49 @@ public class EtudiantService extends BaseServiceImp<Etudiant,Integer> implements
 	        }
 		return null;
 	}
-	
-	
-	
-	
 
-	 public Etudiant findByNomAndPrenom(String nomE, String prenomE) {
+	@Override
+	public List<Etudiant> getByEquipes(Integer idEquipe) {
+		Equipe equipe = equipeRepository.findById(idEquipe).orElse(null);
+		return etudiantRepo.findByEquipe(equipe);
+	}
+
+	@Override
+	public Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant etudiant, Integer idEquipe, Integer idContrat) {
+		System.out.println("etudiant:");
+		System.out.println(etudiant);
+//		System.out.println("etudiant: "+etudiant.getNom()+" , "+ etudiant.getPrenom() + " , " + etudiant.getOpt());
+		Contrat contrat = contratRepository.findById(idContrat).orElse(null);
+		System.out.println(contrat);
+		Equipe equipe = equipeRepository.findById(idEquipe).orElse(null);
+		System.out.println(equipe);
+		List<Equipe> equipes = new ArrayList<>();
+		Set<Contrat> contrats = new HashSet<>();
+		equipes.add(equipe);
+		etudiant.setEquipe(equipes);
+		etudiant.setContrats(contrats);
+		this.add(etudiant);
+		return etudiant;
+	}
+
+	@Override
+	public Etudiant assignEtudiantToEquipe(Integer idEt, Integer idEq){
+		Equipe equipe = equipeRepository.findById(idEq).orElse(null);
+		System.out.println(equipe);
+		List<Equipe> equipes = new ArrayList<>();
+		equipes.add(equipe);
+		Etudiant etudiant = this.retrieve(idEt);
+		System.out.println("etudiant");
+		System.out.println(etudiant);
+		etudiant.setEquipe(equipes);
+		System.out.println(etudiant);
+		this.update(etudiant);
+		return etudiant;
+
+	}
+
+
+	public Etudiant findByNomAndPrenom(String nomE, String prenomE) {
 	        List<Etudiant> etudiants = etudiantRepo.findAll();
 	        Etudiant et = new Etudiant();
 	        for (Etudiant e : etudiants) {
@@ -73,6 +110,7 @@ public class EtudiantService extends BaseServiceImp<Etudiant,Integer> implements
 	        
 	        
 	 }
+
 
 
 

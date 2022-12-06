@@ -3,6 +3,9 @@ package com.exemple.Kaddem.Entity;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+
+import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,8 +34,10 @@ public class Departement {
 	@Column(name = "Id")
 	private Integer id;
 	private String nomDepartment;
+
 	
 	@OneToMany(mappedBy = "departement", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Set<Etudiant>eutidants = new LinkedHashSet<>();
+
 }
