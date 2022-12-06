@@ -17,19 +17,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.exemple.Kaddem.Entity.Etudiant;
 import com.exemple.Kaddem.Entity.Option;
+import com.exemple.Kaddem.Repositories.EtudiantRepository;
+import com.exemple.Kaddem.Repositories.UserRepository;
 import com.exemple.Kaddem.ServiceInterface.EtudiantServiceInterface;
 
 import javax.transaction.Transactional;
 
 @RestController
-@RequestMapping("/etudiant")
 @CrossOrigin("*")
+@RequestMapping("/etudiant")
 public class EtudiantController extends BaseController<Etudiant, Integer>{
 
 	@Autowired
 	private EtudiantServiceInterface etudiantService;
 	
-	
+	@Autowired
+	private EtudiantRepository etudiantRepository;
+
 	
 	
 	   @PostMapping("Assigne/{idE}/{idD}")
@@ -41,6 +45,7 @@ public class EtudiantController extends BaseController<Etudiant, Integer>{
 	    private List<Etudiant> getEtudiantsByDepartement(@PathVariable(value = "idD") Integer idD){
 	        return etudiantService.getEtudiantsByDepartement(idD);
 	    }
+
 
 		@PostMapping("add_etudiant/assign_equipe_contrat/{idE}/{idC}")
 		@Transactional
@@ -54,6 +59,14 @@ public class EtudiantController extends BaseController<Etudiant, Integer>{
 		   return etudiantService.assignEtudiantToEquipe(idEtudiant, idEquipe);
 		}
 
+
+	    
+	    @GetMapping("/count")
+		private Integer getNumberOfEtudiant(){
+		    return (int) etudiantRepository.count();
+		}
+		
+	    
 
 	
 }
