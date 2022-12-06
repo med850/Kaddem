@@ -17,17 +17,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.exemple.Kaddem.Entity.Etudiant;
 import com.exemple.Kaddem.Entity.Option;
+import com.exemple.Kaddem.Repositories.EtudiantRepository;
+import com.exemple.Kaddem.Repositories.UserRepository;
 import com.exemple.Kaddem.ServiceInterface.EtudiantServiceInterface;
 
 @RestController
-@RequestMapping("/etudiant")
 @CrossOrigin("*")
+@RequestMapping("/etudiant")
 public class EtudiantController extends BaseController<Etudiant, Integer>{
 
 	@Autowired
 	private EtudiantServiceInterface etudiantService;
 	
-	
+	@Autowired
+	private EtudiantRepository etudiantRepository;
+
 	
 	
 	   @PostMapping("Assigne/{idE}/{idD}")
@@ -40,5 +44,14 @@ public class EtudiantController extends BaseController<Etudiant, Integer>{
 	        return etudiantService.getEtudiantsByDepartement(idD);
 	    }
 
+	    
+	    @GetMapping("/count")
+		private Integer getNumberOfEtudiant(){
+		    return (int) etudiantRepository.count();
+		}
+		
+	    
+	    
+	    
 	
 }

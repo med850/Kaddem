@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/equipe")
+@CrossOrigin("*")
 public class EquipeController extends BaseController<Equipe, Integer>{
   
 	

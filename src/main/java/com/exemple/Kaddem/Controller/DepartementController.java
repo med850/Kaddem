@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/depatement")
+@RequestMapping("/departement")
+@CrossOrigin("*")
 public class DepartementController extends BaseController<Departement, Integer>{
 	
 

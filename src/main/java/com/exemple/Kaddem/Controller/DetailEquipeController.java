@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/detailequipe")
+@CrossOrigin("*")
 public class DetailEquipeController extends BaseController<DetailEquipe, Integer>{
 
    /* @Autowired

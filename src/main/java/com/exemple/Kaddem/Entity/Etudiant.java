@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -46,8 +47,8 @@ public class Etudiant {
 	@ManyToOne
 	private Departement departement;
 	
-	@OneToOne(mappedBy = "etudiant")
-	private Contrat contrat;
+	@OneToMany(mappedBy = "etudiant", fetch = FetchType.LAZY)
+	private Set<Contrat>contrats;
 	
 	
 	
