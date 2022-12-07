@@ -21,12 +21,16 @@ import javax.persistence.TemporalType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @CrossOrigin("*")
@@ -53,7 +57,6 @@ public class Contrat {
 	
 	
 	@ManyToOne
-	@JsonIgnore
 	private Etudiant etudiant;
 	
 	

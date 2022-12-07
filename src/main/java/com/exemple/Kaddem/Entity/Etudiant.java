@@ -22,6 +22,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -47,10 +49,12 @@ public class Etudiant {
 
 
 	@ManyToOne
+	//@JsonIgnore
 	private Departement departement;
 
 
-	@OneToMany(mappedBy = "etudiant", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "etudiant")
+	@JsonIgnore
 	private Set<Contrat>contrats;
 
 
