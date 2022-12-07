@@ -5,26 +5,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor 
 @Table(name = "EQUIPE")
@@ -41,7 +29,7 @@ public class Equipe {
 	
 	
 	
-	@ManyToMany(mappedBy ="equipe", fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Etudiant> etudiant = new ArrayList<>();
 	

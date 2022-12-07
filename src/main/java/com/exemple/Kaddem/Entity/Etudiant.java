@@ -56,9 +56,6 @@ public class Etudiant {
 
 
 	
-	@OneToMany(mappedBy = "etudiant", fetch = FetchType.LAZY)
-	private Set<Contrat>contrats;
-	
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="ETUDIANT_EQUIPE")
