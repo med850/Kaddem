@@ -78,7 +78,13 @@ public class ContratController extends BaseController<Contrat, Integer>{
 //	}
 
 
-	  
+	@PostMapping("/addContrat/etudiant/{idEtudiant}")
+	public Contrat addContrat(@RequestBody Contrat contrat, @PathVariable("idEtudiant") Integer idEtudiant){
+
+		return this.contratService.addContratAffectToEtudiant(contrat, idEtudiant);
+
+
+	}
 	  
 	  
 	

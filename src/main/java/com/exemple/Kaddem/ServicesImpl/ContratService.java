@@ -2,6 +2,7 @@ package com.exemple.Kaddem.ServicesImpl;
 
 import com.exemple.Kaddem.Entity.*;
 import com.exemple.Kaddem.Repositories.ContratRepository;
+import com.exemple.Kaddem.Repositories.EtudiantRepository;
 import com.exemple.Kaddem.Repositories.UniversiteRepository;
 import com.exemple.Kaddem.ServiceInterface.ContratServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ public class ContratService extends BaseServiceImp<Contrat,Integer> implements C
 	    EquipeService equipeService;
 	    @Autowired
 	    EtudiantService etudService;
+		@Autowired
+	EtudiantRepository etudiantRepository;
 
 
 	    @Autowired
@@ -202,8 +205,25 @@ public class ContratService extends BaseServiceImp<Contrat,Integer> implements C
 		}
 		return null;
 		    }*/
-		
-	
+
+	@Override
+	public Contrat addContratAffectToEtudiant(Contrat contrat, Integer idEtudiant) {
+		Etudiant etudiant;
+		etudiant = etudiantRepository.findById(idEtudiant).orElse(null);
+		Date date = new Date();
+		if (etudiant!=null){
+			for(Contrat c:etudiant.getContrats()){
+				if(c.getDateFinContrat().compareTo(date)>0){
+					return null;
+				}
+			}
+			contrat.setEtudiant(etudiant);
+			this.add(contrat);
+			System.out.println(etudiant);
+			return contrat;
+		}
+		return null;
+	}
 
 	
  

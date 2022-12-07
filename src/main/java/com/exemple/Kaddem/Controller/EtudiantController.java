@@ -47,10 +47,10 @@ public class EtudiantController extends BaseController<Etudiant, Integer>{
 	    }
 
 
-	@PostMapping("add_etudiant/assign_equipe/{idE}")
+	@PostMapping("add_etudiant/assign_equipe_dep/{idE}/{idD}")
 	@Transactional
-	Etudiant addAndAssignEtudiantToEquipeAndContract(@RequestBody Etudiant etudiant, @PathVariable(value = "idE") Integer idEquipe){
-		return etudiantService.addAndAssignEtudiantToEquipe(etudiant, idEquipe);
+	Etudiant addAndAssignEtudiantToEquipeAndDepartement(@RequestBody Etudiant etudiant, @PathVariable(value = "idE") Integer idEquipe, @PathVariable(value = "idD") Integer idDepartement){
+		return etudiantService.addAndAssignEtudiantToEquipeAndDepartement( etudiant, idEquipe, idDepartement);
 	}
 
 		@PutMapping("/assign_equipe/{idEt}/{idEq}")

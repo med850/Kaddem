@@ -50,7 +50,7 @@ public interface EtudiantServiceInterface extends BaseServiceInterface<Etudiant,
 	    List<Etudiant> getEtudiantsByDepartement (Integer idDepartement);
 	    List<Etudiant> getByEquipes (Integer idEquipe);
 
-	Etudiant addAndAssignEtudiantToEquipe(Etudiant etudiant, Integer idEquipe);
+	Etudiant addAndAssignEtudiantToEquipeAndDepartement(Etudiant etudiant, Integer idEquipe, Integer idDepartement);
 	Etudiant assignEtudiantToEquipe(Integer idEt, Integer idEq);
 	
 }

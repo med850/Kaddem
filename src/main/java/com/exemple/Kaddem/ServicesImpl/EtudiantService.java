@@ -63,9 +63,11 @@ public class EtudiantService extends BaseServiceImp<Etudiant,Integer> implements
 	}
 
 	@Override
-	public Etudiant addAndAssignEtudiantToEquipe(Etudiant etudiant, Integer idEquipe) {
+	public Etudiant addAndAssignEtudiantToEquipeAndDepartement(Etudiant etudiant, Integer idEquipe, Integer idDepartement) {
 		Equipe equipe = equipeRepository.findById(idEquipe).orElse(null);
 		System.out.println(equipe);
+		Departement departement = depatmentRepo.findById(idDepartement).orElse(null);
+		etudiant.setDepartement(departement);
 		List<Equipe> equipes = new ArrayList<>();
 		Set<Contrat> contrats = new HashSet<>();
 		equipes.add(equipe);
