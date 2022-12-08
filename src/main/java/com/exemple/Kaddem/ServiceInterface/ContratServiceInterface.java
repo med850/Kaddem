@@ -30,6 +30,8 @@ public interface ContratServiceInterface extends BaseServiceInterface<Contrat, I
 
 	Contrat addContratAffectToEtudiant(Contrat contrat, Integer idEtudiant);
 
+	List<Contrat> findContratByEtudiant(Integer idEtudiant);
+
 
 	
 	

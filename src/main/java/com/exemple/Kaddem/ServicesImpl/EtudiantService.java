@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import com.exemple.Kaddem.Repositories.EtudiantRepository;
 import com.exemple.Kaddem.ServiceInterface.EtudiantServiceInterface;
 
+import javax.transaction.Transactional;
+
 
 @Service
 public class EtudiantService extends BaseServiceImp<Etudiant,Integer> implements EtudiantServiceInterface{
@@ -63,6 +65,7 @@ public class EtudiantService extends BaseServiceImp<Etudiant,Integer> implements
 	}
 
 	@Override
+	@Transactional
 	public Etudiant addAndAssignEtudiantToEquipeAndDepartement(Etudiant etudiant, Integer idEquipe, Integer idDepartement) {
 		Equipe equipe = equipeRepository.findById(idEquipe).orElse(null);
 		System.out.println(equipe);
@@ -78,18 +81,32 @@ public class EtudiantService extends BaseServiceImp<Etudiant,Integer> implements
 	}
 
 	@Override
+	@Transactional
+	public Etudiant addAndAssignEtudiantToEquipeAndContrat(Etudiant etudiant, Integer idEquipe, Integer idContrat) {
+		Equipe equipe = equipeRepository.findById(idEquipe).orElse(null);
+		System.out.println(equipe);
+		Contrat contrat = contratRepository.findById(idContrat).orElse(null);
+		List<Equipe> equipes = new ArrayList<>();
+		Set<Contrat> contrats = new HashSet<>();
+		contrats.add(contrat);
+		equipes.add(equipe);
+		etudiant.setEquipe(equipes);
+		etudiant.setContrats(contrats);
+		this.add(etudiant);
+		return etudiant;
+	}
+
+	@Override
+	@Transactional
 	public Etudiant assignEtudiantToEquipe(Integer idEt, Integer idEquipe){
-		Etudiant etudiant = etudiantRepo.findById(idEt).orElse(null);
+		Etudiant etudiant = new Etudiant();
+		etudiant = etudiantRepo.findById(idEt).orElse(etudiant);
         Equipe equipe = equipeRepository.findById(idEquipe).orElse(null);
-        System.out.println(equipe);
         List<Equipe> equipes = new ArrayList<>();
-        Set<Contrat> contrats = new HashSet<>();
         equipes.add(equipe);
-        if (etudiant !=null){
-            etudiant.setEquipe(equipes);
-            etudiant.setContrats(contrats);
-            this.update(etudiant);
-        }
+		etudiant.setEquipe(equipes);
+		this.add(etudiant);
+
 
         return etudiant;
 	}

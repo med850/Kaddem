@@ -38,7 +38,7 @@ public class UniversiteController extends BaseController<Universite, Integer>{
 	
 	
 	 @PostMapping("Assigne/{idU}/{idD}")
-	    private Universite AddandAssigne(@PathVariable(value = "idU") Integer idU, @PathVariable(value = "idD") Integer idD){
+	    private Universite Assigne(@PathVariable(value = "idU") Integer idU, @PathVariable(value = "idD") Integer idD){
 		 universiteService.assignUniversiteToDepartement(idU,idD);
 	        return universiteService.retrieve(idU);
 	    }

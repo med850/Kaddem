@@ -29,7 +29,7 @@ public class Equipe {
 	
 	
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "equipe")
 	@JsonIgnore
 	private List<Etudiant> etudiant = new ArrayList<>();
 	

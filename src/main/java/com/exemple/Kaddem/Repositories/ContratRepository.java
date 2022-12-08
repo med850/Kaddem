@@ -21,6 +21,9 @@ public interface ContratRepository extends  BaseRepository<Contrat, Integer> {
 	
     List<Contrat> findContratByEtudiantId(Integer id);
 
+    @Query("select c from Contrat c where c.etudiant.id = ?1 and c.archive = false")
+    List<Contrat> findContratByEtudiantIdAndArchiveIsFalse(Integer id);
+
 //    @Query("SELECT con as montant FROM Departement.id " +
 //            "INNER JOIN  Contrat con ON con.id = Departement.id " +
 //            "INNER JOIN  Etudiant etud ON etud.id = con.id " +

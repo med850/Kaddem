@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -82,6 +83,15 @@ public class ContratController extends BaseController<Contrat, Integer>{
 	public Contrat addContrat(@RequestBody Contrat contrat, @PathVariable("idEtudiant") Integer idEtudiant){
 
 		return this.contratService.addContratAffectToEtudiant(contrat, idEtudiant);
+
+
+	}
+
+	@GetMapping("/getByetudiant/{idEtudiant}")
+	public Contrat findByEtudiant(@PathVariable("idEtudiant") Integer idEtudiant){
+		List<Contrat> contrats = this.contratService.findContratByEtudiant(idEtudiant);
+		System.out.println(contrats.size());
+		return contrats.get(0);
 
 
 	}

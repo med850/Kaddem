@@ -22,12 +22,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "ETUDIANT")
@@ -57,7 +56,7 @@ public class Etudiant {
 
 	
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(name="ETUDIANT_EQUIPE")
 	private List<Equipe> equipe = new ArrayList<>();
 

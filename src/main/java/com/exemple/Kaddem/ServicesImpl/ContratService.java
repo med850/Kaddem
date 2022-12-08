@@ -225,8 +225,10 @@ public class ContratService extends BaseServiceImp<Contrat,Integer> implements C
 		return null;
 	}
 
-	
- 
+	@Override
+	public List<Contrat> findContratByEtudiant(Integer idEtudiant) {
+		return contratRepository.findContratByEtudiantIdAndArchiveIsFalse(idEtudiant);
+	}
 
- 
+
 }
