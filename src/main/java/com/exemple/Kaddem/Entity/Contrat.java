@@ -52,7 +52,6 @@ public class Contrat {
 	
 	
 	@ManyToOne
-	@JsonIgnore
 	private Etudiant etudiant;
 	
 	
